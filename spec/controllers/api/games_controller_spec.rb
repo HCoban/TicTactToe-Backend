@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::GamesController, type: :controller do
   describe "#create" do
     it "calls #create_with_players" do
-      game = class_double("Game").as_stubbed_const(:transfer_nested_constants => true)
+      game = class_double("Game").as_stubbed_const
       expect(game).to receive(:create_with_players).with("p1", "p2")
       
       post(:create, {

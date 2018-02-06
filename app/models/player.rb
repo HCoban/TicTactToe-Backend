@@ -8,6 +8,7 @@
 #  mark_value :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  won        :boolean          default("false"), not null
 #
 
 class Player < ApplicationRecord

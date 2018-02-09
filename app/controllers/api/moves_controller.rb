@@ -1,3 +1,5 @@
+require 'tic_tac_toe'
+
 class Api::MovesController < ApplicationController
   def create
     begin
@@ -13,10 +15,11 @@ class Api::MovesController < ApplicationController
 
     game = Game.find_by(id: jwt.first["game_id"])
     if game
+      tic_tac_toe = TicTacToe.new(game)
       player = move_params[:value].to_i == 1 ? game.first_player : game.second_player
-      @mark = Mark.create(player_id: player.id, game_id: game.id, column: move_params[:move][0], row: move_params[:move][1].to_i)
-      game.check_status
-      @mark.reload
+      column = move_params[:move][0]
+      row = move_params[:move][1].to_i
+      @mark = tic_tac_toe.mark_cell(player, row, column).reload
       render :show
     else
       render json: "Not found", status: 404

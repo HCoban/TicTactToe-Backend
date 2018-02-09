@@ -15,4 +15,8 @@ class Player < ApplicationRecord
   validates :game_id, :mark_value, presence: true
 
   belongs_to :game
+
+  def assign_won
+    self.update(won: true)
+  end
 end

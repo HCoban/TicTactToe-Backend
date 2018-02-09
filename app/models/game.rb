@@ -31,8 +31,8 @@ class Game < ApplicationRecord
   end
 
   def self.create_with_players(player_one_name, player_two_name)
-    player_one_name ||= "Player#1"
-    player_two_name ||= "Player#2"
+    player_one_name = "Player#1" if player_one_name.blank?
+    player_two_name = "Player#2" if player_two_name.blank?
     game = self.new
     return game unless game.save
 

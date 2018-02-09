@@ -13,6 +13,7 @@
 
 class Player < ApplicationRecord
   validates :game_id, :mark_value, presence: true
+  validates :mark_value, inclusion: { in: ["X", "O"] }
 
   belongs_to :game
 

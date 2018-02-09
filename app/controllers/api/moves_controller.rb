@@ -19,8 +19,13 @@ class Api::MovesController < ApplicationController
       player = move_params[:value].to_i == 1 ? game.first_player : game.second_player
       column = move_params[:move][0]
       row = move_params[:move][1].to_i
-      @mark = tic_tac_toe.mark_cell(player, row, column).reload
-      render :show
+      @mark = tic_tac_toe.mark_cell(player, row, column)
+      if @mark.valid?
+        @mark.reload
+        render :show
+      else
+        render json: "Invalid move", status: 422
+      end
     else
       render json: "Not found", status: 404
     end

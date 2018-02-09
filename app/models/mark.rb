@@ -12,8 +12,8 @@
 #
 
 class Mark < ApplicationRecord
-  validates :game_id, presence: true
-  validates :player_id, presence: true
+  validates :game_id, :player_id, :row, :column, presence: true
+  validates :game, uniqueness: { scope: [:row, :column], message: "has already value for this position" } 
 
   belongs_to :game
   belongs_to :player

@@ -41,8 +41,11 @@ class TicTacToe
   end
 
   def mark_cell(player, row, column)
-    mark = Mark.create(player_id: player.id, game_id: @game.id, column: column, row: row)
-    check_status
+    mark = Mark.new(player_id: player.id, game_id: @game.id, column: column, row: row)
+    if mark.valid?
+      mark.save
+      check_status
+    end
 
     mark
   end

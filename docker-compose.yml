@@ -13,6 +13,8 @@ services:
       - '.:/app'
     depends_on:
       - postgres
+    environment:
+      - HMAC_SECRET=nwiafnewnwepkewofkeowkpmz214wefnwrn
 
 volumes:
   postgres:

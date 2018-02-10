@@ -37,4 +37,6 @@ The postgreSQL database has three tables, `games`, `marks`, and `players`. `Game
 
 `MarksController#create` is responsible for making token checks and creating a new mark (a new move in game) or rendering errors. If the result is successful `app/views/api/marks/show.json.jbuilder` is rendered.
 
+Game play logic is handled by the `TicTacToe` class which can be found at `lib/tic_tac_toe.rb`. This class has methods for marking a cell and checking the game status to determine if there is winner and/or the game is completed.
+
 All test files are under `spec/` folder and can be run by `docker-compose exec website bundle exec rspec`.

@@ -1,6 +1,6 @@
 require 'tic_tac_toe'
 
-class Api::MovesController < ApplicationController
+class Api::MarksController < ApplicationController
   def create
     begin
       jwt = JWT.decode(move_params[:token], ENV["HMAC_SECRET"], true, { :algorithm => 'HS256' })  

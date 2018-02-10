@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::MovesController, type: :controller do
+RSpec.describe Api::MarksController, type: :controller do
   describe "create" do
     it("decodes token and queries game") do
       game = Game.create(id: 1)
